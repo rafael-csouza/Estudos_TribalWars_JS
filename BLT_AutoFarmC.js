@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         BLT_AutoFarmC
 // @version      0.1
-// @description  Auto Farm
+// @description  Auto Farm por Bilet
 // @author       BiLeT
 // @match        http*://*.tribalwars.com.br/*screen=am_farm*
 // @grant        none
