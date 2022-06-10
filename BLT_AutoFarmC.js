@@ -12,7 +12,7 @@
   function farmarComC() {
     document.querySelector('title').textContent = 'FARM';
     if (document.getElementsByClassName('farm_icon_c')) {
-      var tempoAleatorioAtk = Math.floor(Math.random() * 3000) + 1000;
+      var tempoAleatorioAtk = Math.floor(Math.random() * 1000) + 800;
       console.log('farmarComC em:', tempoAleatorioAtk / 1000, 'segundos...');
       document.getElementsByClassName('farm_icon_c')[x].click();
       x = x + 1;
@@ -22,7 +22,7 @@
 
   var farmarComCTempo = setInterval(
     farmarComC,
-    Math.floor(Math.random() * 3000) + 4000,
+    Math.floor(Math.random() * 1000) + 1500,
   );
 
   var tempoAleatorioMudarAldeias = Math.floor(Math.random() * 10000) + 40000;
