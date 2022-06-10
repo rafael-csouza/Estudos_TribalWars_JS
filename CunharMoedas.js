@@ -10,6 +10,7 @@
 
 (function () {
   function cunharMaximo() {
+    document.querySelector('title').textContent = 'CUNHAR';
     var maximumAmount = document
       .getElementById('coin_mint_fill_max')
       .text.match(/\(([^)]+)\)/)[1];

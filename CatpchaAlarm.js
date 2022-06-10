@@ -21,6 +21,14 @@
   //****************************** Configuration ******************************//
   //*************************** End Configuration ***************************//
   setInterval(async function () {
+    if (
+      document.querySelectorAll(
+        '#error > div.center > div.content.box-border.red > div.inner > div.full-content > h2',
+      ).length > 0
+    ) {
+      console.log('Much requisitions, reload page!');
+      window.location.reload();
+    }
     if (document.querySelector('#bot_check')) {
       console.log('Captcha!');
       TribalWars.playAttackSound();
