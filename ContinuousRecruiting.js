@@ -15,17 +15,26 @@
 (async (ModuleLoader, unitConfig) => {
   'use strict';
 
+  // // BiletProximaAldeia
+  // var tempoAleatorioMudarAldeias = Math.floor(Math.random() * 30000) + 60000;
+  // console.log(
+  //   'Mudar de Aldeias:',
+  //   tempoAleatorioMudarAldeias / 1000,
+  //   'segundos...',
+  // );
+  // setInterval(function () {
+  //   //window.location.reload();
+  //   document.querySelector('#village_switch_right > span').click();
+  // }, tempoAleatorioMudarAldeias);
+
   //****************************** Configuration ******************************//
   const tempoAleatorio = Math.floor(Math.random() * 5000);
   const reloadInterval = 300 * 1000 + tempoAleatorio;
   const minimumQueueSize = 2;
   //*************************** End Configuration ***************************//
 
-  let newPageTitle = 'RECR - ';
-  let aldeiaNome = game_data.village.name;
   setInterval(
-    () =>
-      (document.querySelector('title').textContent = newPageTitle + aldeiaNome),
+    () => (document.querySelector('title').textContent = 'RECR'),
     2000,
   );
 

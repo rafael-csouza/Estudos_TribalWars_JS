@@ -1,22 +1,18 @@
 // ==UserScript==
-// @name         BLT_AutoFarmC
+// @name         #TW - AutoFarmC - BLT
 // @version      0.1
-// @description  Auto Farm por Bilet
+// @description  Auto Farm
 // @author       BiLeT
 // @match        http*://*.tribalwars.com.br/*screen=am_farm*
 // @grant        none
 // ==/UserScript==
 (function () {
   'use strict';
-  let alterarProxAldeia = false;
   let x = 0;
   function farmarComC() {
-    let newPageTitle = 'FARM - ';
-    let aldeiaNome = game_data.village.name;
-    document.querySelector('title').textContent = newPageTitle + aldeiaNome;
-    console.log('farmarComC_function');
+    document.querySelector('title').textContent = 'FARM';
     if (document.getElementsByClassName('farm_icon_c')) {
-      tempoAleatorioAtk = Math.floor(Math.random() * 3000) + 2000;
+      var tempoAleatorioAtk = Math.floor(Math.random() * 3000) + 1000;
       console.log('farmarComC em:', tempoAleatorioAtk / 1000, 'segundos...');
       document.getElementsByClassName('farm_icon_c')[x].click();
       x = x + 1;
@@ -24,27 +20,19 @@
     }
   }
 
-  var tempoAleatorio = Math.floor(Math.random() * 10000) + 40000;
-  var tempoAleatorioAtk = Math.floor(Math.random() * 3000) + 4000;
+  var farmarComCTempo = setInterval(
+    farmarComC,
+    Math.floor(Math.random() * 3000) + 4000,
+  );
 
-  var farmarComCTempo = setInterval(farmarComC, tempoAleatorioAtk);
-  console.log('farmarComC em:', tempoAleatorioAtk / 1000, 'segundos...');
-
-  function alterarAldeia() {
-    console.log('alterarAldeia');
-    document.getElementById('village_switch_right').click();
-    document.getElementById('village_switch_left').click();
-  }
-  if (alterarProxAldeia === true) {
-    var alterarAldeiaTempo = setInterval(alterarAldeia, tempoAleatorio - 20000);
-    console.log(
-      'alterarAldeia a cada:',
-      (tempoAleatorio - 20000) / 1000,
-      'segundos...',
-    );
-  }
-  console.log('Atualizar a página:', tempoAleatorio / 1000, 'segundos...');
+  var tempoAleatorioMudarAldeias = Math.floor(Math.random() * 10000) + 40000;
+  console.log(
+    'Mudar de Aldeias:',
+    tempoAleatorioMudarAldeias / 1000,
+    'segundos...',
+  );
   setInterval(function () {
-    window.location.reload();
-  }, tempoAleatorio);
+    //window.location.reload();
+    document.querySelector('#village_switch_right > span').click();
+  }, tempoAleatorioMudarAldeias);
 })();

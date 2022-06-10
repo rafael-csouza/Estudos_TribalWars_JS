@@ -15,6 +15,18 @@
 (async (ModuleLoader) => {
   'use strict';
 
+  // BiletProximaAldeia
+  var tempoAleatorioMudarAldeias = Math.floor(Math.random() * 30000) + 60000;
+  console.log(
+    'Mudar de Aldeias:',
+    tempoAleatorioMudarAldeias / 1000,
+    'segundos...',
+  );
+  setInterval(function () {
+    //window.location.reload();
+    document.querySelector('#village_switch_right > span').click();
+  }, tempoAleatorioMudarAldeias);
+
   //****************************** Configuration ******************************//
   const checkInterval = 1000;
   //*************************** End Configuration ***************************//
@@ -26,9 +38,7 @@
 
   // Loop
   setInterval(() => {
-    let newPageTitle = 'PALLY - ';
-    let aldeiaNome = game_data.village.name;
-    document.querySelector('title').textContent = newPageTitle + aldeiaNome;
+    document.querySelector('title').textContent = 'PALLY';
     // Click on the first train option if appliable
     if (!document.querySelector('#knight_activity > span')) {
       document.querySelector('#knight_actions > div > a').click();

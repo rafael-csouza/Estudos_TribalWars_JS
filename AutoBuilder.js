@@ -15,6 +15,18 @@
 (async (ModuleLoader) => {
   'use strict';
 
+  // BiletProximaAldeia
+  var tempoAleatorioMudarAldeias = Math.floor(Math.random() * 30000) + 60000;
+  console.log(
+    'Mudar de Aldeias:',
+    tempoAleatorioMudarAldeias / 1000,
+    'segundos...',
+  );
+  setInterval(function () {
+    //window.location.reload();
+    document.querySelector('#village_switch_right > span').click();
+  }, tempoAleatorioMudarAldeias);
+
   // Dependency loading
   await ModuleLoader.loadModule('utils/notify-utils');
 
@@ -69,27 +81,27 @@
     let newDiv = document.createElement('div');
     const selectBuildingHtml =
       '<td><select id="selectBuildingHtml"> ' +
-      '<option value="main">Headquarters</option> ' +
-      '<option value="barracks">Barracks</option> ' +
-      '<option value="stable">Stable</option> ' +
-      '<option value="garage">Workshop</option> ' +
-      '<option value="watchtower">Watchtower</option> ' +
-      '<option value="smith">Smithy</option> ' +
-      '<option value="market">Market</option> ' +
-      '<option value="wood">Timber Camp</option> ' +
-      '<option value="stone">Clay Pit</option> ' +
-      '<option value="iron">Iron Mine</option> ' +
-      '<option value="farm">Farm</option> ' +
-      '<option value="storage">Warehouse</option> ' +
-      '<option value="hide">Hiding Place</option> ' +
-      '<option value="wall">Wall</option> ' +
+      '<option value="main">Edifício principal</option> ' +
+      '<option value="barracks">Quartel</option> ' +
+      '<option value="stable">Estábulo</option> ' +
+      '<option value="garage">Oficina</option> ' +
+      '<option value="watchtower">Praça de reunião</option> ' +
+      '<option value="smith">Ferreiro</option> ' +
+      '<option value="market">Mercado</option> ' +
+      '<option value="wood">Bosque</option> ' +
+      '<option value="stone">Poço de argila</option> ' +
+      '<option value="iron">Mina de ferro</option> ' +
+      '<option value="farm">Fazenda</option> ' +
+      '<option value="storage">Armazém</option> ' +
+      '<option value="hide">Esconderijo</option> ' +
+      '<option value="wall">Muralha</option> ' +
       '</select></td>';
     let newTable = `<table id="autoBuilderTable">
       <tr>
           <td><button id="startBuildingScript" class="btn">Start</button></td>
       </tr>
       <tr>
-          <td>Queue length:</td>
+          <td>Máximo da fila:</td>
           <td><input id='queueLengthInput' style='width:30px'></td>
           <td><button id='queueLengthBtn' class='btn'>OK</button></td>
           <td><span id='queueText'></span></td>
@@ -151,7 +163,7 @@
     if (localStorage.scriptStatus) {
       scriptStatus = JSON.parse(localStorage.scriptStatus);
       if (scriptStatus) {
-        document.getElementById('startBuildingScript').innerText = 'Stop';
+        document.getElementById('startBuildingScript').innerText = 'Pausar';
         startScript();
       }
     }
@@ -164,9 +176,7 @@
         document.getElementById('buildqueue').rows.length - 2;
     }
     setInterval(function () {
-      let newPageTitle = 'BUILD - ';
-      let aldeiaNome = game_data.village.name;
-      document.querySelector('title').textContent = newPageTitle + aldeiaNome;
+      document.querySelector('title').textContent = 'CONST';
       let btn = document.querySelector('.btn-instant-free');
       if (btn && btn.style.display != 'none') {
         btn.click();
@@ -327,15 +337,16 @@
         localStorage.buildingObject = JSON.stringify(setLocalStorage);
         if (!game_data.features.Premium.active && qLength > 2) {
           document.getElementById('queueText').innerHTML =
-            ' Premium account not active, queue length set to 2.';
+            ' Conta premium não ativa, comprimento da fila definido como 2.';
         } else if (parseInt(buildingObject.buildingQueueLength) > 5) {
           document.getElementById('queueText').innerHTML =
-            ' Queue length set to ' +
+            ' Comprimento da fila definido para ' +
             buildingObject.buildingQueueLength +
-            '. There will be additional costs for more than 5 constructions in the queue';
+            '. Comprimento da fila definido como 6. Haverá custos adicionais para mais de 5 construções na fila.';
         } else {
           document.getElementById('queueText').innerHTML =
-            ' Queue length set to ' + buildingObject.buildingQueueLength;
+            ' Comprimento da fila definido: ' +
+            buildingObject.buildingQueueLength;
         }
         document.getElementById('queueLengthInput').value =
           buildingObject.buildingQueueLength;
