@@ -32,10 +32,17 @@
     if (document.querySelector('#bot_check')) {
       console.log('Captcha!');
       TribalWars.playAttackSound();
+      $('html,body').scrollTop(0);
       var myAudio = new Audio(
         'http://protettordelinks.com/wp-content/baixar/bomba_relogio_alerta_www.toquesengracadosmp3.com.mp3',
       );
       await myAudio.play();
     }
+
+    //onmousemove = function(e){console.log("mouse location:", e.clientX, e.clientY)}
+    onclick = function (e) {
+      console.log('mouse location:', e.clientX, e.clientY);
+    };
+    //document.elementFromPoint(104, 232).click()
   }, 1000);
 })();

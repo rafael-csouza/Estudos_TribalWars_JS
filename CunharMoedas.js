@@ -29,6 +29,11 @@
   var tempoAleatorio = Math.floor(Math.random() * 30000) + 600000;
 
   console.log('Atualizando a página:', tempoAleatorio / 1000, 'segundos...');
+
+  setInterval(function () {
+    document.querySelector('title').textContent = 'CUNHAR';
+  }, 1000);
+
   setInterval(function () {
     window.location.reload();
   }, tempoAleatorio);

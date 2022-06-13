@@ -22,11 +22,20 @@
 (async (ModuleLoader) => {
   'use strict';
 
+  // BiletProximaAldeia
+  var tempoAleatorioMudarAldeias = Math.floor(Math.random() * 30000) + 60000;
+  console.log(
+    'Mudar de Aldeias:',
+    tempoAleatorioMudarAldeias / 1000,
+    'segundos...',
+  );
+  setInterval(function () {
+    //window.location.reload();
+    document.querySelector('#village_switch_right > span').click();
+  }, tempoAleatorioMudarAldeias);
+
   // Dependency loading
   await ModuleLoader.loadModule('utils/notify-utils');
-
-  // Controls the window title
-  TwFramework.setIdleTitlePreffix('SCAVENGING', document.title);
 
   const gameData = TribalWars.getGameData();
   const tag =
@@ -43,7 +52,7 @@
   if (unsafeWindow.window.name === tag) {
     iniciar();
     loop(nLoop);
-    recarregar(60);
+    recarregar(600); // minutos (vai passar de aldeia antes)
   }
 
   function iniciar() {
@@ -60,6 +69,7 @@
   // Loop no inicar a cada X segundos. nLoop = 0 para o loop
   function loop(segundos) {
     var timer = setInterval(function () {
+      document.querySelector('title').textContent = 'COLET';
       if (nLoop === 0) {
         clearInterval(timer);
       } else {
