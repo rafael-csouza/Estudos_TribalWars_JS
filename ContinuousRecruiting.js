@@ -16,21 +16,21 @@
   'use strict';
 
   // // BiletProximaAldeia
-  // var tempoAleatorioMudarAldeias = Math.floor(Math.random() * 30000) + 60000;
+  // var tempoAleatorioMudarAldeiasOuReload = Math.floor(Math.random() * 30000) + 60000;
   // console.log(
   //   'Mudar de Aldeias:',
-  //   tempoAleatorioMudarAldeias / 1000,
+  //   tempoAleatorioMudarAldeiasOuReload / 1000,
   //   'segundos...',
   // );
   // setInterval(function () {
   //   //window.location.reload();
   //   document.querySelector('#village_switch_right > span').click();
-  // }, tempoAleatorioMudarAldeias);
+  // }, tempoAleatorioMudarAldeiasOuReload);
 
   //****************************** Configuration ******************************//
   const tempoAleatorio = Math.floor(Math.random() * 5000);
   const reloadInterval = 300 * 1000 + tempoAleatorio;
-  const minimumQueueSize = 2;
+  const minimumQueueSize = 10;
   //*************************** End Configuration ***************************//
 
   setInterval(

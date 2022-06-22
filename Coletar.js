@@ -23,16 +23,17 @@
   'use strict';
 
   // BiletProximaAldeia
-  var tempoAleatorioMudarAldeias = Math.floor(Math.random() * 30000) + 60000;
+  var tempoAleatorioMudarAldeiasOuReload =
+    Math.floor(Math.random() * 30000) + 60000;
   console.log(
     'Mudar de Aldeias:',
-    tempoAleatorioMudarAldeias / 1000,
+    tempoAleatorioMudarAldeiasOuReload / 1000,
     'segundos...',
   );
   setInterval(function () {
     //window.location.reload();
     document.querySelector('#village_switch_right > span').click();
-  }, tempoAleatorioMudarAldeias);
+  }, tempoAleatorioMudarAldeiasOuReload);
 
   // Dependency loading
   await ModuleLoader.loadModule('utils/notify-utils');

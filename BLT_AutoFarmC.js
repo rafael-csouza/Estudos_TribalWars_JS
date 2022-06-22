@@ -23,14 +23,15 @@
     Math.floor(Math.random() * 1000) + 500,
   );
 
-  var tempoAleatorioMudarAldeias = Math.floor(Math.random() * 10000) + 40000;
+  var tempoAleatorioMudarAldeiasOuReload =
+    Math.floor(Math.random() * 10000) + 40000;
   console.log(
     'Mudar de Aldeias:',
-    tempoAleatorioMudarAldeias / 1000,
+    tempoAleatorioMudarAldeiasOuReload / 1000,
     'segundos...',
   );
   setInterval(function () {
-    //window.location.reload();
-    document.querySelector('#village_switch_right > span').click();
-  }, tempoAleatorioMudarAldeias);
+    window.location.reload();
+    // document.querySelector('#village_switch_right > span').click();
+  }, tempoAleatorioMudarAldeiasOuReload);
 })();
