@@ -14,6 +14,11 @@ setInterval(
   () => (document.querySelector('title').textContent = 'REC-PP'),
   2000,
 );
+//comprar o que?
+var comprarMadeira = false;
+var comprarArgila = false;
+var comprarFerro = false;
+
 //quantidade estocada de cada recurso
 var estoqueMandeira;
 var estoqueArgila;
@@ -32,12 +37,19 @@ inputComprarArgila = $("input[name='buy_stone']");
 inputComprarFerro = $("input[name='buy_iron']");
 
 setInterval(function () {
-  estoqueMandeira = $('#premium_exchange_stock_wood').text();
-  console.log('estoqueMandeira:', estoqueMandeira);
-  estoqueArgila = $('#premium_exchange_stock_stone').text();
-  console.log('estoqueArgila:', estoqueArgila);
-  estoqueFerro = $('#premium_exchange_stock_iron').text();
-  console.log('estoqueFerro:', estoqueFerro);
+  if (comprarMadeira) {
+    estoqueMandeira = $('#premium_exchange_stock_wood').text();
+    console.log('estoqueMandeira:', estoqueMandeira);
+  }
+  if (comprarArgila) {
+    estoqueArgila = $('#premium_exchange_stock_stone').text();
+    console.log('estoqueArgila:', estoqueArgila);
+  }
+  if (comprarFerro) {
+    estoqueFerro = $('#premium_exchange_stock_iron').text();
+    console.log('estoqueFerro:', estoqueFerro);
+  }
+
   if (estoqueMandeira > qtdComprar) {
     inputComprarMadeira.val(qtdComprar);
     // inputComprarMadeira.val(estoqueMandeira);
@@ -51,6 +63,9 @@ setInterval(function () {
     // inputComprarFerro.val(estoqueFerro);
     algoPraComprar = true;
   } else {
+    inputComprarMadeira.val('');
+    inputComprarArgila.val('');
+    inputComprarFerro.val('');
     console.log('Nada para comprar agora!');
   }
   if (algoPraComprar) {
