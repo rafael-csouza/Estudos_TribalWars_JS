@@ -30,7 +30,7 @@
   //****************************** Configuration ******************************//
   const tempoAleatorio = Math.floor(Math.random() * 5000);
   const reloadInterval = 300 * 1000 + tempoAleatorio;
-  const minimumQueueSize = 10;
+  const minimumQueueSize = 2;
   //*************************** End Configuration ***************************//
 
   setInterval(

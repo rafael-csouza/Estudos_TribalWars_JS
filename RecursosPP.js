@@ -15,7 +15,7 @@ setInterval(
   2000,
 );
 //comprar o que?
-var comprarMadeira = false;
+var comprarMadeira = true;
 var comprarArgila = false;
 var comprarFerro = false;
 
@@ -37,27 +37,27 @@ inputComprarFerro = $("input[name='buy_iron']");
 
 setInterval(function () {
   if (comprarMadeira) {
-    var qtdComprarMadeira = $(
+    var qtdComprarMadeira = +$(
       '#premium_exchange_rate_wood > div:nth-child(1)',
     ).text();
     console.log('qtdComprarMadeira:', qtdComprarMadeira);
-    estoqueMandeira = $('#premium_exchange_stock_wood').text();
+    estoqueMandeira = +$('#premium_exchange_stock_wood').text();
     console.log('estoqueMandeira:', estoqueMandeira);
   }
   if (comprarArgila) {
-    var qtdComprarArgila = $(
+    var qtdComprarArgila = +$(
       '#premium_exchange_rate_stone > div:nth-child(1)',
     ).text();
     console.log('qtdComprarArgila:', qtdComprarArgila);
-    estoqueArgila = $('#premium_exchange_stock_stone').text();
+    estoqueArgila = +$('#premium_exchange_stock_stone').text();
     console.log('estoqueArgila:', estoqueArgila);
   }
   if (comprarFerro) {
-    var qtdComprarFerro = $(
+    var qtdComprarFerro = +$(
       '#premium_exchange_rate_iron > div:nth-child(1)',
     ).text();
     console.log('qtdComprarFerro:', qtdComprarFerro);
-    estoqueFerro = $('#premium_exchange_stock_iron').text();
+    estoqueFerro = +$('#premium_exchange_stock_iron').text();
     console.log('estoqueFerro:', estoqueFerro);
   }
 
@@ -96,6 +96,7 @@ function confirmarCompra() {
   $('.btn-confirm-yes').click();
   $('.btn-confirm-no').click();
   algoPraComprar = false;
+  console.log('confirmarCompra-algoPraComprar:', algoPraComprar);
 }
 
 setInterval(function () {
